@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Check</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <div id="quiz-container">
+        <h1>Check Yourself Quiz</h1>
+
+        <div id="user-info">
+            <label for="username">Enter your initials: </label>
+            <input type="text" id="username" placeholder="Your Initials">
+            <button onclick="startQuiz()">Start Quiz</button>
+        </div>
+        
+        <div id="quiz" class="hidden"></div>
+        
+        <button id="next-button" class="hidden" onclick="nextQuestion()">Next Question</button>
+        <div id="result" class="hidden"></div>
+        
+        <div id="final-score" class="hidden"></div>
+        
+        <div id="controls" class="hidden">
+            <button onclick="restartQuiz()">Restart Quiz</button>
+            <button onclick="deleteScore()">Delete Score</button>
+        </div>
+        
+        <div id="timer" class="hidden">Time Left: 60s</div>
+        
+        <button id="view-highscores" onclick="showHighScores()">View High Scores</button>
+        
+        <div id="high-scores" class="hidden">
+            <h2>High Scores</h2>
+            <ul id="high-scores-list"></ul>
+            <button onclick="hideHighScores()">Close High Scores</button>
+        </div>
+    </div>
+    <script src="./assets/js/script.js"></script>
+</body>
