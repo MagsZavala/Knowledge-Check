@@ -27,7 +27,7 @@ const quizData = [
     },
     {
         question: "What is an endpoint in the context of a web API?",
-        options: ["The URL to which API requests are sent.", "The database where API data is stored.", "The protocol used for API communication.", "The user interface of the API.],"],
+        options: ["The URL to which API requests are sent.", "The database where API data is stored.", "The protocol used for API communication.", "The user interface of the API."],
         answer: "The URL to which API requests are sent."
     },
     {
