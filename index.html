@@ -9,6 +9,7 @@
 <body>
     <div id="quiz-container">
         <h1>Check Yourself Quiz</h1>
+        <p>It's a timed quiz, You have 1 min to answer all 10 questions. If you answer a question wrong, 5 seconds will be deducted from your time. Let the games begin.</p>
 
         <div id="user-info">
             <label for="username">Enter your initials: </label>
@@ -29,13 +30,13 @@
         </div>
         
         <div id="timer" class="hidden">Time Left: 60s</div>
-        
-        <button id="view-highscores" onclick="showHighScores()">View High Scores</button>
+       
+        <button onclick="showHighScores()" class="view-high-scores">View High Scores</button>
         
         <div id="high-scores" class="hidden">
             <h2>High Scores</h2>
             <ul id="high-scores-list"></ul>
-            <button onclick="hideHighScores()">Close High Scores</button>
+            <button onclick="hideHighScores()">Close</button>
         </div>
     </div>
     <script src="./assets/js/script.js"></script>
