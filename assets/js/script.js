@@ -1,4 +1,4 @@
-
+// quiz questions
 const quizData = [
     {
         question: "What does API stand for?",
@@ -57,7 +57,8 @@ let score = 0;
 let userName = "";
 let timer;
 let timeLeft = 60;
-
+let answered = false; // To ensure the question is answered
+//start the quiz
 function startQuiz() {
     userName = document.getElementById("username").value.trim();
     if (userName === "") {
@@ -73,7 +74,7 @@ function startQuiz() {
     loadQuestion();
     startTimer();
 }
-
+//how the questions are set up
 function loadQuestion() {
     const questionContainer = document.getElementById("quiz");
     questionContainer.innerHTML = "";
@@ -94,7 +95,11 @@ function loadQuestion() {
     document.getElementById("result").innerText = "";
 }
 
+//question requirments
 function checkAnswer(selectedOption) {
+    //if (answered) return; // Prevent multiple answers
+
+    answered = true; // Mark as answered
     const questionData = quizData[currentQuestionIndex];
     const correctAnswer = questionData.answer;
     const resultContainer = document.getElementById("result");
@@ -125,7 +130,14 @@ function checkAnswer(selectedOption) {
     });
 }
 
+
+// they need to answer before moving on
 function nextQuestion() {
+    if (!answered) {
+        alert("Please select an answer before proceeding.");
+        return;
+    }
+
     currentQuestionIndex++;
     if (currentQuestionIndex < quizData.length) {
         loadQuestion();
@@ -133,7 +145,7 @@ function nextQuestion() {
         showFinalScore();
     }
 }
-
+//time final score card
 function showFinalScore() {
     clearInterval(timer);
 
@@ -144,7 +156,10 @@ function showFinalScore() {
     document.getElementById("timer").classList.add("hidden");
 
     const finalScoreContainer = document.getElementById("final-score");
-    finalScoreContainer.innerHTML = `<h2>${userName}, your score is: ${score} out of ${quizData.length}</h2>`;
+    finalScoreContainer.innerHTML = 
+        `<h2>Quiz Finished!</h2>
+        <h2>${userName}, your score is: ${score} out of ${quizData.length}</h2>
+        <p>Time left: ${timeLeft}s</p>`;
     finalScoreContainer.classList.remove("hidden");
 
     document.getElementById("controls").classList.remove("hidden");
@@ -152,14 +167,22 @@ function showFinalScore() {
     saveScore();
     displayHighScores();
 }
-
+// saving the players info
 function saveScore() {
-    const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-    highScores.push({ name: userName, score: score });
-    highScores.sort((a, b) => b.score - a.score);
-    localStorage.setItem("highScores", JSON.stringify(highScores));
-}
+    const initials = document.getElementById("username").value.trim();
+    if (initials === "") {
+        alert("Please enter your initials to save your score.");
+        return;
+    }
 
+    const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+    highScores.push({ name: initials, score: score, timeLeft: timeLeft });
+    highScores.sort((a, b) => b.score - a.score || b.timeLeft - a.timeLeft);
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+
+    displayHighScores();
+}
+//whats on display for the highscore board
 function showHighScores() {
     const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
     const highScoresList = document.getElementById("high-scores-list");
@@ -167,13 +190,13 @@ function showHighScores() {
 
     highScores.forEach((entry, index) => {
         const listItem = document.createElement("li");
-        listItem.innerText = `${index + 1}. ${entry.name} - ${entry.score}`;
+        listItem.innerText = `${index + 1}. ${entry.name} - Score: ${entry.score}, Time Left: ${entry.timeLeft}s`;
         highScoresList.appendChild(listItem);
     });
 
     document.getElementById("high-scores").classList.remove("hidden");
 }
-
+//hide high score card
 function hideHighScores() {
     document.getElementById("high-scores").classList.add("hidden");
 }
@@ -186,7 +209,7 @@ function deleteScore() {
     localStorage.removeItem("highScores");
     alert("All scores deleted successfully!");
 }
-
+// timer for game
 function startTimer() {
     timer = setInterval(() => {
         timeLeft--;
