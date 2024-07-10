@@ -1,6 +1,5 @@
 # Knowledge-Check Quiz
 
-
 Description
 
 Welcome to Knowledge Check Quiz! This project is designed to help you practice and test your knowledge of Web APIs and JavaScript fundamentals. The quiz is a timed, interactive challenge featuring multiple-choice questions. You'll receive feedback on each answer, and your final score will be saved so you can track your progress over time.
@@ -49,24 +48,36 @@ This project requires the following features:
 -High Score Access: Provide a link to view the high score list at any time.
 
 
+The following image demonstrates the web application's appearance and functionality:
+![A timed quiz that test your API knowledge.]
+(./images/quiz1.png)
+(./images/quiz2.png)
+(./images/quiz3.png)
+(./images/quiz4.png)
+(./images/quiz5.png)
+(./images/quiz6.png)
+---
 Installation
+
 To run this project locally, follow these steps:
+
+git@github.com:MagsZavala/Knowledge-Check.git
+https://github.com/MagsZavala/Knowledge-Check.git
 
 Clone the repository to your local machine:
 bash
 Copy code
-git clone https://github.com/your-username/web-apis-quiz.git
+git clone 
 Navigate to the project directory:
 bash
 Copy code
-cd web-apis-quiz
+cd Knowledge-Check 
 Open index.html in your preferred web browser.
 Usage
-Enter your name and click the Start Quiz button to begin.
+Enter your initials and click the Start Quiz button to begin.
 Answer each question as they appear. Your choice will be highlighted.
 If you select an incorrect answer, 5 seconds will be subtracted from the timer.
 After the last question or when the timer reaches 0, your score will be displayed.
-Enter your initials to save your score and view the high score list.
 Use the View High Scores link to see the high score list at any time.
 You can choose to restart the quiz or delete all high scores.
 Mock-Up
@@ -76,7 +87,7 @@ The following animation demonstrates the application functionality:
 Features
 Dynamic Questions: Questions and options are loaded dynamically from a JavaScript object.
 Timer: The countdown timer starts when the quiz begins and decreases further with incorrect answers.
-Real-Time Feedback: Immediate feedback is given for correct and incorrect answers.
+Real-Time Feedback: Immediate feedback is given for correct and incorrect answers. 
 High Scores: High scores are saved in local storage and can be viewed at any time.
 Responsive Design: The interface is designed to be clean, polished, and responsive across different devices.
 Deployment
