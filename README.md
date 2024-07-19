@@ -63,6 +63,7 @@ To run this project locally, follow these steps:
 
 git@github.com:MagsZavala/Knowledge-Check.git
 https://github.com/MagsZavala/Knowledge-Check.git
+file:///Users/magoo/bootcamp/hw/Knowledge-Check/index.html
 
 Clone the repository to your local machine:
 bash
